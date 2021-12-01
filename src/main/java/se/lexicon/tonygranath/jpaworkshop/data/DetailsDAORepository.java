@@ -7,9 +7,7 @@ import se.lexicon.tonygranath.jpaworkshop.model.Details;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Repository
 @Transactional
