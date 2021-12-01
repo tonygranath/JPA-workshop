@@ -99,6 +99,6 @@ public class Book {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(bookId, isbn, title, maxLoanDays, available, authors);
+		return Objects.hash(bookId, isbn, title, maxLoanDays, available);
 	}
 }

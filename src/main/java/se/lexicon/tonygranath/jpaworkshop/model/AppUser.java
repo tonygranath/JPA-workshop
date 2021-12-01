@@ -89,7 +89,7 @@ public class AppUser {
 	public void setRegDate(LocalDate regDate) {
 		if (regDate == null)
 			throw new IllegalArgumentException("regDate was null.");
-			this.regDate = regDate;
+		this.regDate = regDate;
 	}
 
 	public Details getUserDetails() {

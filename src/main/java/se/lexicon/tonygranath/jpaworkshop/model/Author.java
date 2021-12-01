@@ -85,6 +85,6 @@ public class Author {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(authorId, firstName, lastName, writtenBooks);
+		return Objects.hash(authorId, firstName, lastName);
 	}
 }
