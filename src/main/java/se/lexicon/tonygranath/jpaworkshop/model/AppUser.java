@@ -116,6 +116,6 @@ public class AppUser {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(appUserId, username, regDate, userDetails, loans);
+		return Objects.hash(appUserId, username, regDate, userDetails);
 	}
 }

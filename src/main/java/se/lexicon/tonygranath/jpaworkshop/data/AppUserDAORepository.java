@@ -11,9 +11,16 @@ import java.util.Collection;
 
 @Repository
 @Transactional
-public class AppUserDAORepository implements GenericCRUD<AppUser, Integer> {
-	@PersistenceContext
-	private final EntityManager entityManager;
+public class AppUserDAORepository extends GenericDAORepository<AppUser, Integer> { //implements GenericCRUD<AppUser, Integer> {
+	//@PersistenceContext
+	//private final EntityManager entityManager;
+
+	@Autowired
+	public AppUserDAORepository(EntityManager em) {
+		super(em, AppUser.class);
+	}
+
+/* Old code, before I created GenericDAORepository
 
 	@Autowired
 	public AppUserDAORepository(EntityManager em) {
@@ -51,5 +58,5 @@ public class AppUserDAORepository implements GenericCRUD<AppUser, Integer> {
 		if (id == null)
 			throw new IllegalArgumentException("id was null.");
 		entityManager.remove(findById(id));
-	}
+	} */
 }
