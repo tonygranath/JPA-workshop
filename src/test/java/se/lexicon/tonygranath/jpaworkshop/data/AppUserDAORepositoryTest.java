@@ -45,37 +45,44 @@ class AppUserDAORepositoryTest {
 
 	@Test
 	void findByUsername() {
-	//	System.out.println(dao.findByUsername(testUser.getUsername()));
+		assertEquals(testUser, dao.findByUsername(USERNAME));
 	}
 
 	@Test
 	void findByName() {
+		assertEquals(1, dao.findByName(NAME).size());
 	}
 
 	@Test
 	void findByEmail() {
-		System.out.println(
-				"************************\n"
-				+ dao.findByEmail(testUser.getUserDetails().getEmail()).getUsername()
-				+ "\n************************"
-		);
-
+		assertEquals(testUser, dao.findByEmail(EMAIL));
 	}
 
 	@Test
 	void findByRegDateBetween() {
-	}
-
-	@Test
-	void findByRegDateBefore() {
-		System.out.println(
-				"************************\n"
-				+ dao.findByRegDateBefore(LocalDate.parse("2022-01-01"))
-				+ "\n************************"
+		assertEquals(0,
+				dao.findByRegDateBetween(
+					LocalDate.parse("1900-01-01"),
+					LocalDate.parse("1918-01-01")
+				).size()
+		);
+		assertEquals(1,
+				dao.findByRegDateBetween(
+					LocalDate.parse("2020-01-01"),
+					LocalDate.parse("2025-01-01")
+				).size()
 		);
 	}
 
 	@Test
+	void findByRegDateBefore() {
+		assertEquals(0, dao.findByRegDateBefore(LocalDate.parse("1900-01-01")).size());
+		assertEquals(1, dao.findByRegDateBefore(LocalDate.parse("2025-01-01")).size());
+	}
+
+	@Test
 	void findByRegDateAfter() {
+		assertEquals(1, dao.findByRegDateAfter(LocalDate.parse("1900-01-01")).size());
+		assertEquals(0, dao.findByRegDateAfter(LocalDate.parse("2025-01-01")).size());
 	}
 }
