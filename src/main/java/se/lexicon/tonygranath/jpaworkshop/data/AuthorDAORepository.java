@@ -40,44 +40,4 @@ public class AuthorDAORepository extends GenericDAORepository<Author, Integer> {
 				.setParameter("name", "%" + name + "%")
 				.getResultList();
 	}
-
-	/*
-	@Autowired
-	public AuthorDAORepository(EntityManager em) {
-		entityManager = em;
-	}
-
-	@Override
-	public Author findById(Integer id) {
-		if (id == null)
-			throw new IllegalArgumentException("id was null.");
-		return entityManager.find(Author.class, id);
-	}
-
-	@Override
-	public Collection<Author> findAll() {
-		return entityManager.createQuery("SELECT a FROM Author a", Author.class)
-				.getResultList();
-	}
-
-	@Override
-	public Author create(Author author) {
-		if (author == null)
-			throw new IllegalArgumentException("author was null.");
-		entityManager.persist(author);
-		return author;
-	}
-
-	@Override
-	public Author update(Author author) {
-		if (author ==null)
-			throw new IllegalArgumentException("author was null.");
-		return entityManager.merge(author);
-	}
-
-	@Override
-	public void remove(Integer id) {
-		if (id == null)
-			throw new IllegalArgumentException("id was null.");
-	} */
 }

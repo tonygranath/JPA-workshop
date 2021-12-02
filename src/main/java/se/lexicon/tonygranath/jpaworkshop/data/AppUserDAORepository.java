@@ -12,7 +12,7 @@ import java.util.Collection;
 
 @Repository
 @Transactional
-public class AppUserDAORepository extends GenericDAORepository<AppUser, Integer> { //implements GenericCRUD<AppUser, Integer> {
+public class AppUserDAORepository extends GenericDAORepository<AppUser, Integer> {
 	/*
 	 * Methods inherited from super class:
 	 * 		AppUser findById(Integer id)
@@ -90,44 +90,4 @@ public class AppUserDAORepository extends GenericDAORepository<AppUser, Integer>
 				.setParameter("date", after)
 				.getResultList();
 	}
-
-/* Old code, before I created GenericDAORepository
-
-	@Autowired
-	public AppUserDAORepository(EntityManager em) {
-		entityManager = em;
-	}
-
-	@Override
-	public AppUser findById(Integer id) {
-		return entityManager.find(AppUser.class, id);
-	}
-
-	@Override
-	public Collection<AppUser> findAll() {
-		return entityManager.createQuery("SELECT a FROM AppUser a", AppUser.class)
-				.getResultList();
-	}
-
-	@Override
-	public AppUser create(AppUser appUser) {
-		if (appUser == null)
-			throw new IllegalArgumentException("appUser was null.");
-		entityManager.persist(appUser);
-		return appUser;
-	}
-
-	@Override
-	public AppUser update(AppUser appUser) {
-		if (appUser == null)
-			throw new IllegalArgumentException("appUser was null.");
-		return entityManager.merge(appUser);
-	}
-
-	@Override
-	public void remove(Integer id) {
-		if (id == null)
-			throw new IllegalArgumentException("id was null.");
-		entityManager.remove(findById(id));
-	} */
 }

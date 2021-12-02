@@ -56,45 +56,4 @@ public class BookDAORepository extends GenericDAORepository<Book, Integer> {
 				.setParameter("author", author)
 				.getResultList();
 	}
-
-	/*
-	@Autowired
-	public BookDAORepository(EntityManager em) {
-		entityManager = em;
-	}
-
-	@Override
-	public Book findById(Integer id) {
-		if (id == null)
-			throw new IllegalArgumentException("id was null");
-		return entityManager.find(Book.class, id);
-	}
-
-	@Override
-	public Collection<Book> findAll() {
-		return entityManager.createQuery("SELECT b FROM Book b", Book.class)
-				.getResultList();
-	}
-
-	@Override
-	public Book create(Book book) {
-		if (book == null)
-			throw new IllegalArgumentException("book was null.");
-		entityManager.persist(book);
-		return book;
-	}
-
-	@Override
-	public Book update(Book book) {
-		if (book == null)
-			throw new IllegalArgumentException("book was null.");
-		return entityManager.merge(book);
-	}
-
-	@Override
-	public void remove(Integer id) {
-		if (id == null)
-			throw new IllegalArgumentException("id was null.");
-		entityManager.remove(findById(id));
-	} */
 }

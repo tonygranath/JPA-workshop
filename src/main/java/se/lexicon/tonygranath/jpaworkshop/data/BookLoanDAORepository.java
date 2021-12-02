@@ -13,6 +13,15 @@ import java.util.Collection;
 @Repository
 @Transactional
 public class BookLoanDAORepository extends GenericDAORepository<BookLoan, Integer> {
+	/*
+	 * Methods inherited from super class:
+	 * 		AppUser findById(Integer id)
+	 * 		Collection<AppUser> findAll()
+	 * 		AppUser create(AppUser appUser)
+	 * 		AppUser update(AppUser appUser)
+	 * 		void remove(Integer id)
+	 */
+
 	@PersistenceContext
 	private final EntityManager entityManager;
 
@@ -42,47 +51,4 @@ public class BookLoanDAORepository extends GenericDAORepository<BookLoan, Intege
 				.setParameter("status", returned)
 				.getResultList();
 	}
-
-
-
-	/*
-	@Autowired
-	public BookLoanDAORepository(EntityManager em) {
-		entityManager = em;
-	}
-
-	@Override
-	public BookLoan findById(Integer id) {
-		if (id == null)
-			throw new IllegalArgumentException("id was null.");
-		return entityManager.find(BookLoan.class, id);
-	}
-
-	@Override
-	public Collection<BookLoan> findAll() {
-		return entityManager.createQuery("SELECT b FROM BookLoan b", BookLoan.class)
-				.getResultList();
-	}
-
-	@Override
-	public BookLoan create(BookLoan bookLoan) {
-		if (bookLoan == null)
-			throw new IllegalArgumentException("bookLoan was null.");
-		entityManager.persist(bookLoan);
-		return bookLoan;
-	}
-
-	@Override
-	public BookLoan update(BookLoan bookLoan) {
-		if (bookLoan == null)
-			throw new IllegalArgumentException("bookLoan was null.");
-		return entityManager.merge(bookLoan);
-	}
-
-	@Override
-	public void remove(Integer id) {
-		if (id == null)
-			throw new IllegalArgumentException("id was null.");
-		entityManager.remove(findById(id));
-	} */
 }
