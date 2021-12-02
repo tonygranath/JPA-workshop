@@ -12,9 +12,9 @@ import java.time.LocalDate;
 import java.util.Collection;
 
 //@Repository
-//@Transactional
+@Transactional
 public class GenericDAORepository<T, ID> {//implements GenericCRUD<T, Integer> {
-//	@PersistenceContext
+	@PersistenceContext
 	private final EntityManager entityManager;
 	private final Class<T> clazz;
 

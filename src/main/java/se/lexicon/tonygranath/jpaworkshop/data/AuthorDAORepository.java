@@ -6,13 +6,31 @@ import org.springframework.transaction.annotation.Transactional;
 import se.lexicon.tonygranath.jpaworkshop.model.Author;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Collection;
 
 @Repository
 @Transactional
-public class AuthorDAORepository implements GenericCRUD<Author, Integer> {
+public class AuthorDAORepository extends GenericDAORepository<Author, Integer> {
+	/*
+	 * Methods inherited from super class:
+	 * 		AppUser findById(Integer id)
+	 * 		Collection<AppUser> findAll()
+	 * 		AppUser create(AppUser appUser)
+	 * 		AppUser update(AppUser appUser)
+	 * 		void remove(Integer id)
+	 */
+
+	@PersistenceContext
 	private final EntityManager entityManager;
 
+	@Autowired
+	public AuthorDAORepository(EntityManager em) {
+		super(em, Author.class);
+		entityManager = em;
+	}
+
+	/*
 	@Autowired
 	public AuthorDAORepository(EntityManager em) {
 		entityManager = em;
@@ -50,5 +68,5 @@ public class AuthorDAORepository implements GenericCRUD<Author, Integer> {
 	public void remove(Integer id) {
 		if (id == null)
 			throw new IllegalArgumentException("id was null.");
-	}
+	} */
 }
