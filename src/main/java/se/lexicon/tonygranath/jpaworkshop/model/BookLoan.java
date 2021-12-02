@@ -13,10 +13,10 @@ public class BookLoan {
 	private LocalDate loanDate;
 	private LocalDate dueDate;
 	private boolean returned;
-	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_appuser_id")
 	private AppUser borrower;
-	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_book_id")
 	private Book book;
 

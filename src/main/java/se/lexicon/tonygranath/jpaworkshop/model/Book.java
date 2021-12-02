@@ -11,11 +11,12 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, name = "id")
 	private int bookId;
+	@Column(unique = true)
 	private String isbn;
 	private String title;
 	private int maxLoanDays;
 	private boolean available = true;
-	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Author> authors = new HashSet<>();
 
 	public Book(String isbn, String title, int maxLoanDays) {

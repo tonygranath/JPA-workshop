@@ -13,8 +13,8 @@ public class Author {
 	private int authorId;
 	private String firstName;
 	private String lastName;
-	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
-	private Set<Book> writtenBooks;
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Book> writtenBooks = new HashSet<>();
 
 	public Author(String firstName, String lastName) {
 		setFirstName(firstName);

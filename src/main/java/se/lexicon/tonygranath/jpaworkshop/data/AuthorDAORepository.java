@@ -30,6 +30,17 @@ public class AuthorDAORepository extends GenericDAORepository<Author, Integer> {
 		entityManager = em;
 	}
 
+	public Collection<Author> findByName(String name) {
+		if ((name == null) || name.equals(""))
+			throw new IllegalArgumentException("name was null or empty.");
+		return entityManager.createQuery(
+				"SELECT a FROM Author a " +
+					"WHERE CONCAT(a.firstName, ' ', a.lastName) " +
+					"LIKE :name", Author.class)
+				.setParameter("name", "%" + name + "%")
+				.getResultList();
+	}
+
 	/*
 	@Autowired
 	public AuthorDAORepository(EntityManager em) {
